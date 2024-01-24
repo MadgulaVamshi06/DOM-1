@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Calculator</title>
+    <style>
+        body {
+            display: flex;
+        }
+
+        input {
+            width: 200px;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            display: inline-block;
+            color: #545151;
+        }
+
+        button {
+            width: 100px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input id="num1" type="number" placeholder="enter 1st number">
+        <input id="num2" type="number" placeholder="enter 2nd number">
+        <br><br>
+        <button onclick="calculate('plus')">Add</button>
+        <button onclick="calculate('subtract')">Subtract</button>
+        <button onclick="calculate('multiply')">Multiply</button>
+        <button onclick="calculate('divide')">Divide</button>
+
+    </div>
+</body>
+
+</html>
+<script>
+    function calculate(operation) {
+
+        var a = document.getElementById('num1').value;
+        var b = document.getElementById('num2').value;
+        var num1 = parseInt(a);
+        var num2 = parseInt(b);
+
+        if (isNaN(num1) || isNaN(num2)) {
+            alert('Please enter valid numbers');
+            return;
+        }
+
+        var result;
+
+        switch (operation) {
+            case 'plus':
+                result = num1 + num2;
+                break;
+            case 'subtract':
+                result = num1 - num2;
+                break;
+            case 'multiply':
+                result = num1 * num2;
+                break;
+            case 'divide':
+                if (num2 !== 0) {
+                    result = num1 / num2;
+                } else {
+                    alert('Cannot divide by zero');
+                    return;
+                }
+                break;
+            default:
+                alert('Invalid operation');
+                return;
+        }
+
+        alert('Result: ' + result);
+    }
+</script>
